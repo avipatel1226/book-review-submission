@@ -1,14 +1,14 @@
 <?php
 require "connect.php";
 
-// Check if review id exists
+// Check if id exists
 if (!isset($_GET['id'])) {
     die("Invalid request.");
 }
 
 $id = $_GET['id'];
 
-// Delete review using prepared statement
+// Delete review 
 $stmt = $pdo->prepare("DELETE FROM reviews WHERE id = :id");
 $stmt->execute([':id' => $id]);
 
