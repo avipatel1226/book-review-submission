@@ -1,10 +1,9 @@
 <?php
 require "connect.php";
 
-// Check if form is submitted using POST
+// Checks if form is submitted using POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    // Get and sanitize form data
     $title = trim($_POST['title'] ?? '');
     $author = trim($_POST['author'] ?? '');
     $rating = trim($_POST['rating'] ?? '');
@@ -12,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $errors = [];
 
-    // Validate required fields
+    // Validation
     if ($title === '') {
         $errors[] = "Book title is required.";
     }
@@ -25,14 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors[] = "Review text is required.";
     }
 
-    // Validate rating
+    // Validation for rating
     if ($rating === '') {
         $errors[] = "Rating is required.";
     } elseif (!is_numeric($rating) || $rating < 1 || $rating > 5) {
         $errors[] = "Rating must be a number between 1 and 5.";
     }
 
-    // If errors exist, show them and stop
+    // checks error and shows error message if any
     if (!empty($errors)) {
         foreach ($errors as $error) {
             echo "<p style='color:red;'>" . htmlspecialchars($error) . "</p>";

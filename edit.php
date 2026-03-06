@@ -8,7 +8,7 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-// Fetch existing review data
+// shows existing review data
 $stmt = $pdo->prepare("SELECT * FROM reviews WHERE id = :id");
 $stmt->execute([':id' => $id]);
 $review = $stmt->fetch(PDO::FETCH_ASSOC);

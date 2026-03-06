@@ -1,7 +1,7 @@
 <?php
 require "connect.php";
 
-// Fetch all reviews from database
+// shows all reviews from database
 $stmt = $pdo->query("SELECT * FROM reviews ORDER BY created_at DESC");
 $reviews = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
